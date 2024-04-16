@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="stylesheet.css">
-    <title>Document</title>
+    <title>Sheet Six // PHP 1</title>
 </head>
 <body>
 <div class="q1">
@@ -16,6 +16,7 @@
         <button type="submit" name="calculate">Calculate</button>
     </form>
   <?php
+
   if(isset($_POST['calculate'])) {
     $num1 = $_POST['num1'];
     $num2 = $_POST['num2'];
@@ -57,11 +58,13 @@
       echo "<br>";
       for ($i = 1; $i <= 100; $i++) {
         if ($i % 3 == 0 && $i % 5 == 0) {
-          echo "$i is a multiple of 3 and 5 <br>";
+          echo "$i : is a multiple of 3 and 5 <br>";
         } elseif ($i % 3 == 0) {
-          echo "$i is a multiple of 3 <br>";
+          echo "$i : is a multiple of 3 <br>";
         } elseif ($i % 5 == 0) {
-          echo "$i is a multiple of 5 <br>";
+          echo "$i : is a multiple of 5 <br>";
+        } else{
+          echo "$i <br>";
         }
         //    }else{
         //      echo "$i is not a multiple of either <br>" ;
@@ -151,7 +154,7 @@
     );
 
     $count_students = 0;
-    $highest_marks_subject = array();
+    $hiMarkSubj = array();
 
     foreach ($students_marks as $student => $marks) {
     $total_marks = array_sum($marks);
@@ -162,17 +165,55 @@
 
     // find subj with the highest mark for each student
     $max_mark = max($marks);
-    $highest_subject = array_search($max_mark, $marks);
-    $highest_marks_subject[$student] = $highest_subject;
+    $hiSubj = array_search($max_mark, $marks);
+    $hiMarkSubj[$student] = $hiSubj;
     }
 
     echo "Number of students whose total marks are greater than or equal to 400: " . $count_students . "<br><br>";
 
     echo "Subject with the highest mark for each student:<br>";
-    foreach ($highest_marks_subject as $student => $subject) {
+    foreach ($hiMarkSubj as $student => $subject) {
     echo "$student: $subject<br>";
     }
     ?>
+</div>
+<div class = "q5">
+  <h1>Q5 ~ Country Fix Practice</h1>
+  <?php
+    $countries = array(
+      "Egypt" => "Cairo" ,
+      "Germany" => "Berlin" ,
+      "Iraq" => "Baghdad" ,
+      "Palestine" => "Jerusalem" ,
+      "Lebanon" => "Beirut" ,
+      "Tunisia" => "Tunis" ,
+      "Austria" => "Vienna" ,
+      "France" => "Paris" ,
+      "Morocco" => "Rabat" ,
+      "Jordan" => "Amman" 
+      );
+
+    foreach ($countries as $country => $capital) {
+      if(strlen($country)%2 == 0)
+        echo strrev($country);
+      if(strpos($country, "tine"))
+        echo $capital;
+      if(strpos($capital, "man"))
+        unset($country); 
+    }
+
+      $longestCountry = "";
+      $longCountryCap = "";
+
+      foreach ($countries as $country => $capital) {
+        if (strlen($country) > strlen($longestCountry)) {
+          $longestCountry = $country; // update longest country name
+          $longCountryCap = $capital; // update capital of longest country
+        }
+      }
+    
+      echo "Capital of the longest country name: " . $longCountryCap;
+  ?>
 </div>
 </body>
 </html>
