@@ -24,7 +24,7 @@ function addStudent($fname, $lname, $email, $course) {
     $sql = "INSERT INTO student_course (student_id, Course_Code) VALUES ($student_id, $course)";
     $conn->exec($sql);
 
-    return "New student registered successfully";
+    echo "New student registered successfully";
   } catch(PDOException $e) {
     return "Error: " . $e->getMessage();
   }
@@ -65,15 +65,14 @@ function getStudents() {
   global $conn;
   try {
     $sql = "SELECT student.student_id AS id, student.fname AS first_name, student.lname AS last_name, course.name AS course, student_course.grade AS grade 
-                FROM student 
-                INNER JOIN student_course ON student.student_id = student_course.student_id 
-                INNER JOIN course ON student_course.Course_Code = course.Course_Code";
+            FROM student 
+            INNER JOIN student_course ON student.student_id = student_course.student_id 
+            INNER JOIN course ON student_course.Course_Code = course.Course_Code";
     $stmt = $conn->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   } catch(PDOException $e) {
     return "Error: " . $e->getMessage();
   }
 }
-
 
 ?>

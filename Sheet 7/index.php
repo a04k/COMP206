@@ -25,13 +25,13 @@
     echo "<td>".$student['first_name']."</td>";
     echo "<td>".$student['last_name']."</td>";
     echo "<td>".$student['course']."</td>";
-    echo "<td><a href='grading.php?id=".$student['id']."'>Grade</a></td>";
+    echo "<td><a href='grade.php?id=".$student['id']."'>Grade</a></td>";
     echo "</tr>";
   }
   ?>
 </table>
 <br>
-<a href="addstudent.php">Register New Student</a><br><br>
+<a href="addStudents.php">Register New Student</a><br><br>
 <form action="search.php" method="post">
   <label for="search">Search:</label>
   <input type="text" name="search">

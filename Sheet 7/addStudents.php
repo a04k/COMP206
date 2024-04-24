@@ -18,7 +18,7 @@
     <select id="course" name="course" required>
         <option value="104">COMP102</option>
         <option value="102">COMP104</option>
-        <option value="106">COMP206</option>
+        <option value="206">COMP206</option>
     </select><br>
     <input type="submit" value="Register" name="register">
 </form>
